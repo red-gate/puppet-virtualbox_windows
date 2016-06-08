@@ -1,0 +1,18 @@
+$adapter_properties = (& 'C:\Program Files\Oracle\VirtualBox\vboxmanage' list -l hostonlyifs) `
+  -join '`n' `
+  -split '`n`n' `
+  -like 'Name:*<%= @adapter_name -%>*' `
+  -split '`n'
+
+if(!($adapter_properties -like 'DHCP:*Enable')) {
+  # DHCP is not enabled. return 0
+  exit 0
+}
+
+if(!($adapter_properties -like 'IPAddress:*<%= @dhcp_networkaddress-%>.*')) {
+  # IP Address does not match the network IP. return 0
+  exit 0
+}
+
+# Properties are all good. return 1
+exit 1

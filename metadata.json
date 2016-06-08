@@ -1,0 +1,27 @@
+{
+  "name": "redgate-virtualbox_windows",
+  "version": "0.0.1",
+  "author": "redgate",
+  "summary": "A Puppet module to install and configure VirtualBox on windows",
+  "license": "Apache-2.0",
+  "source": "https://github.com/red-gate/puppet-virtualbox_windows",
+  "project_page": "https://github.com/red-gate/puppet-virtualbox_windows",
+  "issues_url": "https://github.com/red-gate/puppet-virtualbox_windows/issues",
+  "description": "A Puppet module to install and configure VirtualBox on windows",
+  "tags": [
+    "windows",
+    "virtualbox"
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Windows",
+      "operatingsystemrelease": [
+        "Server 2012",
+        "Server 2012 R2",
+        "8",
+        "10"
+      ]
+    }
+  ],
+  "dependencies": []
+}

@@ -1,0 +1,8 @@
+if((& 'C:\Program Files\Oracle\VirtualBox\vboxmanage' list -l hostonlyifs) -like 'Name:*<%= @adapter_name -%>*')
+{
+  exit 1
+}
+else
+{
+  exit 0
+}
