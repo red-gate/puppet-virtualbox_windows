@@ -4,7 +4,7 @@ $adapter_properties = (& 'C:\Program Files\Oracle\VirtualBox\vboxmanage' list -l
   -like 'Name:*<%= @adapter_name -%>*' `
   -split '`n'
 
-if(!($adapter_properties -like 'DHCP:*Enable')) {
+if(!($adapter_properties -like 'DHCP:*Enabled')) {
   # DHCP is not enabled. return 0
   exit 0
 }
