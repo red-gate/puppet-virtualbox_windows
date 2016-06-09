@@ -1,20 +1,20 @@
 $server_properties = (& 'C:\Program Files\Oracle\VirtualBox\vboxmanage' list -l dhcpservers) `
   -join '`n' `
   -split '`n`n' `
-  -like 'NetworkName:*<%=@dhcp_netname-%>*' `
+  -like 'NetworkName:*<%=@dhcp_netname%>*' `
   -split '`n'
 
-if(!($server_properties -like 'IP:*<%= @dhcp_ipaddress-%>')) {
+if(!($server_properties -like 'IP:*<%= @dhcp_ipaddress%>')) {
   # IP is incorrect. return 0
   exit 0
 }
 
-if(!($server_properties -like 'lowerIPAddress:*<%= @dhcp_lower_ip_range-%>')) {
+if(!($server_properties -like 'lowerIPAddress:*<%= @dhcp_lower_ip_range%>')) {
   # Lower IP range is incorrect. return 0
   exit 0
 }
 
-if(!($server_properties -like 'upperIPAddress:*<%= @dhcp_upper_ip_range-%>')) {
+if(!($server_properties -like 'upperIPAddress:*<%= @dhcp_upper_ip_range%>')) {
   # Upper IP range is incorrect. return 0
   exit 0
 }

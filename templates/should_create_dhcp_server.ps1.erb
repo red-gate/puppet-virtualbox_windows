@@ -1,4 +1,4 @@
-if((& 'C:\Program Files\Oracle\VirtualBox\vboxmanage' list -l dhcpservers) -like 'NetworkName:*<%=@dhcp_netname-%>')
+if((& 'C:\Program Files\Oracle\VirtualBox\vboxmanage' list -l dhcpservers) -like 'NetworkName:*<%=@dhcp_netname%>')
 {
   exit 1
 }

@@ -1,5 +1,5 @@
 $vbox_config_folder=if($env:VBOX_USER_HOME) { $env:VBOX_USER_HOME } else { "$env:USERPROFILE\.virtualbox" }
 $config_file="$vbox_config_folder\virtualbox.xml"
 
-$currentValue = ([xml](Get-Content $config_file)).VirtualBox.Global.SystemProperties.<%= @property_xmlconfig_name -%>
-if("$currentValue" -eq "<%= @property_xmlconfig_value -%>") { exit 1 } else { exit 0 }
+$currentValue = ([xml](Get-Content $config_file)).VirtualBox.Global.SystemProperties.<%= @property_xmlconfig_name %>
+if("$currentValue" -eq "<%= @property_xmlconfig_value %>") { exit 1 } else { exit 0 }
