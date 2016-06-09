@@ -1,8 +1,9 @@
 # Configure a Host-Only Network Adapter
 class virtualbox_windows::hostonly_network_adapter(
   $adapter_name = 'VirtualBox Host-Only Ethernet Adapter',
-  $dhcp_networkaddress = '172.28.128'
-  ) {
+  $dhcp_networkaddress = '172.28.128',
+  $vboxmanage_search_paths = $virtualbox_windows::params::vboxmanage_search_paths
+  ) inherits virtualbox_windows::params {
 
   $adapter_idaddress = "${dhcp_networkaddress}.1"
   $dhcp_ipaddress = "${dhcp_networkaddress}.2"
@@ -13,7 +14,7 @@ class virtualbox_windows::hostonly_network_adapter(
   Exec {
     provider  => 'powershell',
     logoutput => true,
-    path      => 'C:/Program Files/Oracle/VirtualBox',
+    path      => $vboxmanage_search_paths,
   }
 
   exec { 'Create VirtualBox host only adapter':

@@ -1,6 +1,6 @@
 # Manage a virtualbox property
 define virtualbox_windows::property($value, $property_xmlname = $property_name, $property_name = $title) {
-  include params
+  include ::virtualbox_windows::params
 
   # Because not all the names of the properties as set in VirtualBox.xml match the names of the properties
   # expected by vboxmanage setproperty :(
@@ -20,10 +20,12 @@ define virtualbox_windows::property($value, $property_xmlname = $property_name, 
   }
 
   exec { "Set ${property_name}=${value}":
-    command  => "& \"${params::vboxmanage}\" setproperty \"${property_name}\" \"${value}\"",
-    require  => Package['virtualbox'],
-    onlyif   => template('virtualbox_windows/should_set_property.ps1.erb'),
-    provider => 'powershell',
+    command   => "VBoxManage setproperty \"${property_name}\" \"${value}\"",
+    require   => Package['virtualbox'],
+    onlyif    => template('virtualbox_windows/should_set_property.ps1.erb'),
+    provider  => 'powershell',
+    logoutput => true,
+    path      => $::virtualbox_windows::params::vboxmanage_search_paths,
   }
 
 }
