@@ -1,0 +1,4 @@
+* text=auto
+
+# CRLF line ending for powershell script templates
+*.ps1.erb text eol=crlf
