@@ -1,7 +1,7 @@
 # Encoding: utf-8
 require_relative 'spec_windowshelper'
 
-describe file('D:/VirtualBox VMs') do
+describe file('C:/VirtualBox VMs') do
   it { should be_directory  }
 end
 
