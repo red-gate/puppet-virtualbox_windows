@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'puppet-lint'
 
-gem 'test-kitchen', '~> 1.8.0'
+gem 'test-kitchen', '~> 1.10.0'
 gem 'kitchen-puppet', :github  => 'neillturner/kitchen-puppet', :ref  => 'master'
 gem 'kitchen-vagrant', '~> 0.20.0'
 
