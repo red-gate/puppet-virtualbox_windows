@@ -3,8 +3,7 @@ source 'https://rubygems.org'
 gem 'puppet-lint'
 
 gem 'test-kitchen', '~> 1.8.0'
-# A 'special' version of kitchen-puppet with added support for windows
-gem 'kitchen-puppet', :github  => 'red-gate/kitchen-puppet', :ref  => 'windows_support'
+gem 'kitchen-puppet', :github  => 'neillturner/kitchen-puppet', :ref  => 'master'
 gem 'kitchen-vagrant', '~> 0.20.0'
 
 # needed by the vagrant-winrm vagrant plugin which is needed by kitchen-vagrant in order to be able to use winrm
