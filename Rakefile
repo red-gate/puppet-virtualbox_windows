@@ -6,7 +6,6 @@ require "bundler/setup"
 
 # always destroy the kitchen when running within Teamcity
 destroy_strategy = ENV['TEAMCITY_VERSION'] ? 'always' : 'passing'
-ENV["VAGRANT_SERVER_URL"] = "http://vagrant.red-gate.com"
 
 namespace :acceptance do
   task :installpuppetmodules do

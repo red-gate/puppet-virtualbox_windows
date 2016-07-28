@@ -1,4 +1,4 @@
-$virtualbox_vm_folder_path = 'D:/VirtualBox VMs'
+$virtualbox_vm_folder_path = 'C:/VirtualBox VMs'
 $dhcp_networkaddress = '172.55.127'
 
 include virtualbox_windows
