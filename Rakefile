@@ -8,6 +8,7 @@ require "bundler/setup"
 destroy_strategy = ENV['TEAMCITY_VERSION'] ? 'always' : 'passing'
 
 namespace :acceptance do
+  desc 'Install puppet modules from Puppetfile'
   task :installpuppetmodules do
     sh "bundle exec r10k puppetfile install --verbose"
   end
