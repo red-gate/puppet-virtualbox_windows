@@ -37,3 +37,4 @@ build/
 
 .kitchen/
 .kitchen-modules/
+Gemfile.lock
