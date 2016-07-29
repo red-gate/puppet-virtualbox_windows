@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'puppet-lint'
 
 gem 'test-kitchen', '~> 1.10.0'
-gem 'kitchen-puppet', :github  => 'neillturner/kitchen-puppet', :ref  => 'master'
+gem 'kitchen-puppet', '~> 1.43.1'
 gem 'kitchen-vagrant', '~> 0.20.0'
 
 # needed by the vagrant-winrm vagrant plugin which is needed by kitchen-vagrant in order to be able to use winrm
