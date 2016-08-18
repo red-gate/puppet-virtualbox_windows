@@ -8,6 +8,9 @@ provisioner:
   modules_path: .kitchen-modules
   require_chef_for_busser: false
   resolve_with_librarian_puppet: false
+  puppet_detailed_exitcodes: true
+  puppet_whitelist_exit_code:
+    - 2
 
 platforms:
   - name: windows-2012r2
@@ -22,8 +25,16 @@ verifier:
   name: shell
 
 suites:
-  - name: default
+  - name: puppetv3
     provisioner:
       manifest: default.pp
+      custom_options: --no-stringify_facts
+    verifier:
+      command: rspec -c -f d -I spec spec/acceptance/default_spec.rb
+  - name: puppetv4
+    provisioner:
+      manifest: default.pp
+      require_puppet_collections: true
+      puppet_version: 1.6.0
     verifier:
       command: rspec -c -f d -I spec spec/acceptance/default_spec.rb
