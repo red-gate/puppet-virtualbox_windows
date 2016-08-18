@@ -1,5 +1,5 @@
 # Manage a virtualbox property
-define virtualbox_windows::property($value, $property_xmlname = $property_name, $property_name = $title) {
+define virtualbox_windows::property($value, $property_name = $title, $property_xmlname = $property_name) {
   include ::virtualbox_windows::params
 
   # Because not all the names of the properties as set in VirtualBox.xml match the names of the properties
