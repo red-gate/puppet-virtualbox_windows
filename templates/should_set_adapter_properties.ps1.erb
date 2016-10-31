@@ -1,4 +1,4 @@
-$adapter_properties = (& 'C:\Program Files\Oracle\VirtualBox\vboxmanage' list -l hostonlyifs) `
+$adapter_properties = (& '<%= scope['::virtualbox_windows::vboxmanage'] %>' list -l hostonlyifs) `
   -join '`n' `
   -split '`n`n' `
   -like 'Name:*<%= @adapter_name %>*' `

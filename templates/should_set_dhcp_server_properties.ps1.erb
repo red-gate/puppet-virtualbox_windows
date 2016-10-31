@@ -1,4 +1,4 @@
-$server_properties = (& 'C:\Program Files\Oracle\VirtualBox\vboxmanage' list -l dhcpservers) `
+$server_properties = (& '<%= scope['::virtualbox_windows::vboxmanage'] %>' list -l dhcpservers) `
   -join '`n' `
   -split '`n`n' `
   -like 'NetworkName:*<%=@dhcp_netname%>*' `
