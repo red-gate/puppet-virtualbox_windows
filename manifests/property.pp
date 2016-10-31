@@ -19,7 +19,7 @@ define virtualbox_windows::property($value, $property_name = $title, $property_x
   }
 
   exec { "Set ${property_name}=${value}":
-    command   => "\"${::virtualbox_windows::vboxmanage}\" setproperty \"${property_name}\" \"${value}\"",
+    command   => "& \"${::virtualbox_windows::vboxmanage}\" setproperty \"${property_name}\" \"${value}\"",
     require   => Package['virtualbox'],
     onlyif    => template('virtualbox_windows/should_set_property.ps1.erb'),
     provider  => 'powershell',
