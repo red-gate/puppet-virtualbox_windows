@@ -2,22 +2,21 @@ source 'https://rubygems.org'
 
 gem 'puppet-lint'
 
-gem 'test-kitchen', '~> 1.10.0'
+gem 'test-kitchen', '~> 1'
 gem 'kitchen-puppet', :github => 'red-gate/kitchen-puppet', :branch => 'master'
-gem 'kitchen-vagrant', '~> 0.20.0'
+gem 'kitchen-vagrant', '~> 0'
 
 # needed by the vagrant-winrm vagrant plugin which is needed by kitchen-vagrant in order to be able to use winrm
-gem 'winrm-fs', '~> 0.4'
-gem 'winrm-elevated', '~> 0.4'
+gem 'winrm-fs', '~> 1'
+gem 'winrm-elevated', '~> 1'
 
 # We use serverspec to test the state of our servers
-gem 'serverspec', '~> 2.31.1'
-# use our fork of specinfra which has a fix for a winrm warning.
-# TODO: get that fix back into the main gem...
-gem 'specinfra', :github => 'red-gate/specinfra'
+gem 'serverspec', '~> 2'
+# use our fork of specinfra which supports winrm v2. (Needed for Powershell v5+)
+gem 'specinfra', :github => 'red-gate/specinfra', :branch => 'winrm-v2'
 
 # We use rake as our build engine
-gem 'rake', '~> 11.1.2'
+gem 'rake', '~> 11'
 # This gem tells us how long each rake task takes.
 gem 'rake-performance'
 
