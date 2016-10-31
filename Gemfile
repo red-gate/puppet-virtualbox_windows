@@ -4,8 +4,10 @@ gem 'puppet-lint'
 
 gem 'test-kitchen', '~> 1'
 gem 'kitchen-puppet', :github => 'red-gate/kitchen-puppet', :branch => 'master'
-gem 'kitchen-vagrant', '~> 0'
-
+# We need this PR in to work with vagrant 1.8.6 on windows :sweat:
+# https://github.com/test-kitchen/kitchen-vagrant/pull/241
+gem 'kitchen-vagrant', :github => 'test-kitchen/kitchen-vagrant', :ref => 'b20ee505220fd75201aae3eaedd1520c6d0cbf82'
+  
 # needed by the vagrant-winrm vagrant plugin which is needed by kitchen-vagrant in order to be able to use winrm
 gem 'winrm-fs', '~> 1'
 gem 'winrm-elevated', '~> 1'
