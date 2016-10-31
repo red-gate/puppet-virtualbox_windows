@@ -6,8 +6,9 @@ class virtualbox_windows(
     require chocolatey
 
     package { 'virtualbox':
-      ensure   => $virtualbox_version,
-      provider => 'chocolatey',
+      ensure          => $virtualbox_version,
+      provider        => 'chocolatey',
+      install_options => ['--allow-empty-checksums'],
     }
 
 }
