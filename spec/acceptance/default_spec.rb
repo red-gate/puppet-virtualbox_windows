@@ -27,3 +27,7 @@ describe command('& "C:\Program Files\Oracle\VirtualBox\VBoxManage.exe" list dhc
   # There should be only 1 network adapter defined. (so no line break before the first property 'Name:')
   its(:stdout) { should_not match /[\r\n]NetworkName:/ }
 end
+
+describe windows_registry_key('HKEY_CLASSES_ROOT\AppID\{819B4D85-9CEE-493C-B6FC-64FFE759B3C9}') do
+  it { should have_property_value('RunAs', :type_string, "vagrant") }
+end
