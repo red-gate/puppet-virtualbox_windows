@@ -16,7 +16,13 @@ virtualbox_windows::property { 'machinefolder':
   value   => $virtualbox_vm_folder_path,
 }
 
-class { '::virtualbox_windows::hostonly_network_adapter':
-  dhcp_networkaddress => $dhcp_networkaddress
+class { '::virtualbox_windows::service_identity':
+  username => 'vagrant',
+  password => 'vagrant',
+  require  => Class['virtualbox_windows'],
 }
-Class['virtualbox_windows'] -> Class['virtualbox_windows::hostonly_network_adapter']
+
+class { '::virtualbox_windows::hostonly_network_adapter':
+  dhcp_networkaddress => $dhcp_networkaddress,
+  require             => Class['virtualbox_windows'],
+}
