@@ -6,6 +6,8 @@ require "bundler/setup"
 
 # always destroy the kitchen when running within Teamcity
 destroy_strategy = ENV['TEAMCITY_VERSION'] ? 'always' : 'passing'
+rootdir = File.dirname(__FILE__)
+ENV['SSL_CERT_FILE'] = "#{rootdir}/cacert.pem" unless ENV['SSL_CERT_FILE']
 
 namespace :acceptance do
   desc 'Install puppet modules from Puppetfile'

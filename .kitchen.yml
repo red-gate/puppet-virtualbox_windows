@@ -8,6 +8,9 @@ provisioner:
   modules_path: .kitchen-modules
   require_chef_for_busser: false
   resolve_with_librarian_puppet: false
+  puppet_debug: <%= ENV['PUPPET_DEBUG'] %>
+  custom_options: <%= ENV['PUPPET_COLOR'] %>
+  require_puppet_collections: true
   puppet_detailed_exitcodes: true
   puppet_whitelist_exit_code:
     - 2
@@ -16,7 +19,7 @@ platforms:
   - name: windows-2012r2
     driver_plugin: vagrant
     driver_config:
-      box: kensykora/windows_2012_r2_standard
+      box: red-gate/windows-2012r2
     transport:
       name: winrm
       elevated: true
@@ -25,16 +28,8 @@ verifier:
   name: shell
 
 suites:
-  - name: puppetv3
+  - name: default
     provisioner:
       manifest: default.pp
-      custom_options: --no-stringify_facts
-    verifier:
-      command: rspec -c -f d -I spec spec/acceptance/default_spec.rb
-  - name: puppetv4
-    provisioner:
-      manifest: default.pp
-      require_puppet_collections: true
-      puppet_version: 1.6.0
     verifier:
       command: rspec -c -f d -I spec spec/acceptance/default_spec.rb
