@@ -1,0 +1,15 @@
+$ErrorActionPreference = "Stop"
+
+try {
+  New-PSDrive -Name HKCR -PSProvider Registry -Root HKEY_CLASSES_ROOT -ErrorAction SilentlyContinue
+
+  if( (Get-ItemProperty 'HKCR:\AppID\<%= @appid %>\' -Name RunAs).RunAs -ne '<%= @username %>' ) {
+    exit 0
+  }
+
+  # Already set, return 1
+  exit 1
+} catch {
+  Write-Error $_ -ErrorAction Continue
+  exit 0 # exit 0 so that puppet will attempt to execute the changes anyway.
+}
