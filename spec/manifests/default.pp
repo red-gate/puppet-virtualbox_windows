@@ -1,5 +1,4 @@
 $virtualbox_vm_folder_path = 'C:/VirtualBox VMs'
-$dhcp_networkaddress = '172.55.127'
 
 include virtualbox_windows
 
@@ -23,6 +22,5 @@ class { '::virtualbox_windows::service_identity':
 }
 
 class { '::virtualbox_windows::hostonly_network_adapter':
-  dhcp_networkaddress => $dhcp_networkaddress,
   require             => Class['virtualbox_windows'],
 }

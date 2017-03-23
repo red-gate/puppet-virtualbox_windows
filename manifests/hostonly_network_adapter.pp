@@ -1,13 +1,14 @@
 # Configure a Host-Only Network Adapter
 class virtualbox_windows::hostonly_network_adapter(
   $adapter_name = 'VirtualBox Host-Only Ethernet Adapter',
-  $dhcp_networkaddress = '172.28.128'
+  $dhcp_networkaddress = '172.28.128',
+  $dhcp_mask = '255.255.240.0',
+  $dhcp_upper_ip_range = '172.28.143.254'
   ) inherits virtualbox_windows::params {
 
-  $adapter_idaddress = "${dhcp_networkaddress}.1"
-  $dhcp_ipaddress = "${dhcp_networkaddress}.2"
-  $dhcp_lower_ip_range = "${dhcp_networkaddress}.3"
-  $dhcp_upper_ip_range = "${dhcp_networkaddress}.254"
+  $adapter_idaddress = "${$dhcp_networkaddress}.1"
+  $dhcp_ipaddress = "${$dhcp_networkaddress}.2"
+  $dhcp_lower_ip_range = "${$dhcp_networkaddress}.3"
   $dhcp_netname = "HostInterfaceNetworking-${adapter_name}"
 
   Exec {
@@ -21,12 +22,12 @@ class virtualbox_windows::hostonly_network_adapter(
   }
   ->
   exec { 'Virtualbox: vboxmanage dhcpserver add' :
-    command => "& \"${::virtualbox_windows::vboxmanage}\" dhcpserver add --netname \"${dhcp_netname}\" --ip ${dhcp_ipaddress} --netmask 255.255.255.0 --lowerip ${dhcp_lower_ip_range} --upperip ${dhcp_upper_ip_range} --enable",
+    command => "& \"${::virtualbox_windows::vboxmanage}\" dhcpserver add --netname \"${dhcp_netname}\" --ip ${dhcp_ipaddress} --netmask ${dhcp_mask} --lowerip ${dhcp_lower_ip_range} --upperip ${dhcp_upper_ip_range} --enable",
     onlyif  => template('virtualbox_windows/should_create_dhcp_server.ps1.erb'),
   }
   ->
   exec { 'Virtualbox: vboxmanage dhcpserver modify' :
-    command => "& \"${::virtualbox_windows::vboxmanage}\" dhcpserver modify --netname \"${dhcp_netname}\" --ip ${dhcp_ipaddress} --netmask 255.255.255.0 --lowerip ${dhcp_lower_ip_range} --upperip ${dhcp_upper_ip_range} --enable",
+    command => "& \"${::virtualbox_windows::vboxmanage}\" dhcpserver modify --netname \"${dhcp_netname}\" --ip ${dhcp_ipaddress} --netmask ${dhcp_mask} --lowerip ${dhcp_lower_ip_range} --upperip ${dhcp_upper_ip_range} --enable",
     onlyif  => template('virtualbox_windows/should_set_dhcp_server_properties.ps1.erb'),
   }
   ->
