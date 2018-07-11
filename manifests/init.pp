@@ -12,4 +12,9 @@ class virtualbox_windows(
       install_options => ['--allow-empty-checksums'],
     }
 
+    # Make sure the Virtualbox kernel driver is running
+    -> service { 'vboxdrv':
+      ensure => 'running',
+      enable => true,
+    }
 }
