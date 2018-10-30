@@ -19,5 +19,4 @@ gem 'rake', '~> 11'
 gem 'rake-performance'
 
 # We use r10k to download our puppet modules.
-# We do use our own fork which contains a fix/workaround for SSL validation on windows.
-gem 'r10k', '~> 2'
+gem 'r10k', '~> 2.6.2.0' # 2.6.5 is unhappy on windows
