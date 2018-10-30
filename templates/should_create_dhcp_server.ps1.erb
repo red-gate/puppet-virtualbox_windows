@@ -1,4 +1,4 @@
-if((& '<%= scope['::virtualbox_windows::vboxmanage'] %>' list -l dhcpservers) -like 'NetworkName:*<%=@dhcp_netname%>')
+if((& '<%= scope['::virtualbox_windows::vboxmanage'] %>' list -l dhcpservers) -like 'NetworkName:*<%= @dhcp_netname %>')
 {
   exit 1
 }
