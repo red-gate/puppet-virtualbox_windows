@@ -23,6 +23,13 @@ platforms:
     transport:
       name: winrm
       elevated: true
+  - name: windows-2019-core
+    driver_plugin: vagrant
+    driver_config:
+      box: red-gate/windows-2019-core
+    transport:
+      name: winrm
+      elevated: true
 
 verifier:
   name: shell
