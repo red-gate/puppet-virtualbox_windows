@@ -15,6 +15,7 @@ define virtualbox_windows::hostonly_network_adapter(
   exec { "Create ${adapter_name}":
     command => "& \"${::virtualbox_windows::vboxmanage}\" hostonlyif create",
     onlyif  => template('virtualbox_windows/should_create_adapter.ps1.erb'),
+    returns => [0,1], # accept 1 as a valid exit code to workaround non fatal failures reported by vboxmanage on Windows Server Core.
   }
 
   if $dhcp_networkaddress {
