@@ -1,4 +1,4 @@
-if((& '<%= scope['::virtualbox_windows::vboxmanage'] %>' list -l hostonlyifs) -like 'Name:*<%= @adapter_name %>*')
+if((& '<%= scope['::virtualbox_windows::vboxmanage'] %>' list -l hostonlyifs) -like 'Name:*<%= @adapter_name %>')
 {
   exit 1
 }

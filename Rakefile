@@ -18,7 +18,7 @@ namespace :acceptance do
   desc 'Execute the acceptance tests'
   task :kitchen => [:installpuppetmodules] do |task, args|
     begin
-      sh "kitchen test --destroy=#{destroy_strategy} --concurrency --log-level=info"
+      sh "kitchen test windows-2012r2 --destroy=#{destroy_strategy} --concurrency --log-level=info"
     ensure
       puts "##teamcity[publishArtifacts '#{Dir.pwd}/.kitchen/logs/*.log => logs.zip']"
     end

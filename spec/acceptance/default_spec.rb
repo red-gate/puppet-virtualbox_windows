@@ -5,7 +5,7 @@ describe file('C:/VirtualBox VMs') do
   it { should be_directory  }
 end
 
-describe package('Oracle VM VirtualBox 5.0.14') do
+describe package('Oracle VM VirtualBox 5.2.20') do
   it { should be_installed}
 end
 
@@ -13,8 +13,10 @@ describe command('& "C:\Program Files\Oracle\VirtualBox\VBoxManage.exe" list hos
   its(:stdout) { should match /Name:\s+VirtualBox Host-Only Ethernet Adapter/ }
   its(:stdout) { should match /IPAddress:\s+172\.55\.127\.\d+/ }
   its(:stdout) { should match /DHCP:\s+Enabled/ }
-  # There should be only 1 network adapter defined. (so no line break before the first property 'Name:')
-  its(:stdout) { should_not match /[\r\n]Name:/ }
+
+  its(:stdout) { should match /Name:\s+VirtualBox Host-Only Ethernet Adapter #2/ }
+  its(:stdout) { should match /IPAddress:\s+192\.168\.254\.1/ }
+  its(:stdout) { should match /DHCP:\s+Disabled/ }
 end
 
 describe command('& "C:\Program Files\Oracle\VirtualBox\VBoxManage.exe" list dhcpservers') do
