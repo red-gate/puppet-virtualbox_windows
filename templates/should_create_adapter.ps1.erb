@@ -4,5 +4,6 @@ if((& '<%= scope['::virtualbox_windows::vboxmanage'] %>' list -l hostonlyifs) -l
 }
 else
 {
-  exit 0
+  # exit 0 (e.g. adapter will be created) only if the "vboxmanage list hostonlyifs" did not report an error
+  exit $LASTEXITCODE
 }
