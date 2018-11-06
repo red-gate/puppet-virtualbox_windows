@@ -42,11 +42,6 @@ define virtualbox_windows::hostonly_network_adapter(
       onlyif  => template('virtualbox_windows/should_set_adapter_ip.ps1.erb'),
     }
 
-    ~> exec { "${adapter_name}: enable dhcp" :
-      command => "& \"${::virtualbox_windows::vboxmanage}\" hostonlyif ipconfig \"${adapter_name}\" --dhcp",
-      onlyif  => template('virtualbox_windows/should_set_adapter_dhcp.ps1.erb'),
-    }
-
   } elsif $fixed_ip {
 
     $adapter_ipaddress = $fixed_ip

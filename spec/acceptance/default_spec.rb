@@ -12,11 +12,9 @@ end
 describe command('& "C:\Program Files\Oracle\VirtualBox\VBoxManage.exe" list hostonlyifs') do
   its(:stdout) { should match /Name:\s+VirtualBox Host-Only Ethernet Adapter/ }
   its(:stdout) { should match /IPAddress:\s+172\.55\.127\.\d+/ }
-  its(:stdout) { should match /DHCP:\s+Enabled/ }
 
   its(:stdout) { should match /Name:\s+VirtualBox Host-Only Ethernet Adapter #2/ }
   its(:stdout) { should match /IPAddress:\s+192\.168\.254\.1/ }
-  its(:stdout) { should match /DHCP:\s+Disabled/ }
 end
 
 describe command('& "C:\Program Files\Oracle\VirtualBox\VBoxManage.exe" list dhcpservers') do
