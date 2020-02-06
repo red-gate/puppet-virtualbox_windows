@@ -4,7 +4,7 @@ $server_properties = (& '<%= scope['::virtualbox_windows::vboxmanage'] %>' list 
   -like 'NetworkName:*<%=@dhcp_netname%>##*' `
   -split '##'
 
-if(!($server_properties -like 'IP:*<%= @dhcp_ipaddress%>')) {
+if(!($server_properties -like 'IP:*<%= @dhcp_ipaddress%>') -and !($server_properties -like 'Dhcpd IP:*<%= @dhcp_ipaddress%>')) {
   # IP is incorrect. return 0
   exit 0
 }
